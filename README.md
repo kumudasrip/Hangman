@@ -9,7 +9,8 @@ A fun and interactive **command-line Hangman game** built with Python. Includes 
 - ✅ **Three Difficulty Levels**: Easy, Medium, and Hard  
 - 🧠 **Hints**: Each word comes with a helpful clue  
 - 🎨 **ASCII Hangman Drawing**: Visual progress as you guess  
-- 📊 **Score Tracking**: Win (+10), Lose (-5), tracked across multiple rounds  
+- 📊 **Score Tracking**: Win (+10), Lose (-5), tracked across multiple rounds
+- 🏆 Leaderboard: Top 5 high scores saved in leaderboard.txt 
 - 🔁 **Play Again Option**: Keep playing until you want to quit  
 
 ---
@@ -41,14 +42,16 @@ python hangman.py
 
 ## 📌 How to Play
 
-1. Choose a difficulty: \`Easy\`, \`Medium\`, or \`Hard\`.
-2. A word will be chosen randomly, and a hint will be displayed.
-3. Guess one letter at a time.
-4. You lose an attempt for each wrong guess.
-5. The game ends when you either:
+1. Enter your name and start.
+2. Choose a difficulty: \`Easy\`, \`Medium\`, or \`Hard\`.
+3. A word will be chosen randomly, and a hint will be displayed.
+4. Guess one letter at a time.
+5. You lose an attempt for each wrong guess.
+6. The game ends when you either:
    - Guess the word correctly ✅
    - Use up all your attempts 💀
-6. Your score updates after each round.
+7. Your score updates after each round.
+8. At the end, your final score is saved in leaderboard.txt and top 5 scores are displayed.
 
 ---
 
@@ -56,7 +59,7 @@ python hangman.py
 ## 📌 Future Ideas
 
 - 🎯 Category selection (Animals, Tech, etc.)
-- 💾 Leaderboard system
+- 📊 Load/save full game history
 - 🖥️ GUI using `pygame` or `tkinter`
 - 🌐 Web version using Flask or Django
 
