@@ -27,7 +27,7 @@ A fun and interactive **command-line Hangman game** built with Python. Includes 
 1. Clone this repository or copy the Python file:
 
 \`\`\`bash
-git clone https://github.com/your-username/hangman-game.git
+git clone https://github.com/kumudasrip/hangman-game.git
 cd hangman-game
 \`\`\`
 
