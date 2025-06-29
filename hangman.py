@@ -1,5 +1,5 @@
 import random
-
+import os
 
 HANGMAN_PICS = [
     """
@@ -79,16 +79,6 @@ word_bank = {
         ("button", "Used to fasten clothes")
     ],
     "medium": [
-        ("keyboard", "Used to type on a computer"),
-        ("triangle", "Shape with 3 sides"),
-        ("backpack", "Carried on the shoulders"),
-        ("hangman", "This very game!"),
-        ("difficult", "The opposite of easy"),
-        ("calendar", "Keeps track of days and months"),
-        ("elephant", "Largest land animal"),
-        ("internet", "Connects the world digitally")
-    ],
-    "hard": [
         ("architecture", "Art of designing buildings"),
         ("psychology", "Study of the human mind"),
         ("encyclopedia", "Book containing lots of knowledge"),
@@ -97,12 +87,64 @@ word_bank = {
         ("mathematics", "The study of numbers and shapes"),
         ("constitution", "The basic laws of a country"),
         ("philosopher", "A person who studies big questions")
+    ],
+    "hard": [
+        ("abrogate", "To formally abolish or repeal a law"),
+        ("anachronism", "Something out of place in time"),
+        ("circumlocution", "The use of many words to say something simple"),
+        ("conflagration", "A large destructive fire"),
+        ("defenestration", "The act of throwing someone out of a window"),
+        ("ephemeral", "Lasting for a very short time"),
+        ("equanimity", "Mental calmness in a difficult situation"),
+        ("grandiloquent", "Pompous or extravagant in speech"),
+        ("impecunious", "Having little or no money"),
+        ("inchoate", "Just begun and not fully developed"),
+        ("intransigent", "Unwilling to change one's views or agree"),
+        ("mellifluous", "Pleasant and musical to hear"),
+        ("obfuscate", "To make unclear or confusing"),
+        ("parsimonious", "Extremely unwilling to spend money"),
+        ("pedantic", "Overly concerned with minor details"),
+        ("perfidious", "Deceitful and untrustworthy"),
+        ("recalcitrant", "Stubbornly uncooperative"),
+        ("sesquipedalian", "Using long or complicated words"),
+        ("vicissitude", "A change of circumstances or fortune"),
+        ("zeitgeist", "The defining spirit of a particular era")
     ]
 }
 
 def choose_word_and_hint(level):
     word, hint = random.choice(word_bank[level])
     return word.strip(), hint.strip()
+
+def update_leaderboard(name, score, filename="leaderboard.txt"):
+    entries = []
+
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
+            for line in f:
+                try:
+                    n, s = line.strip().rsplit(",", 1)
+                    entries.append((n, int(s)))
+                except:
+                    continue
+
+    entries.append((name, score))
+
+    entries.sort(key=lambda x: x[1], reverse=True)
+    entries = entries[:5]
+
+    with open(filename, "w") as f:
+        for n, s in entries:
+            f.write(f"{n},{s}\n")
+
+    return entries
+
+def show_leaderboard(entries):
+    print("\n🏆 Leaderboard (Top 5 Scores)")
+    print("-" * 30)
+    for i, (n, s) in enumerate(entries, 1):
+        print(f"{i}. {n} - {s} points")
+    print("-" * 30)
 
 def play_game(score):
     print("\nChoose difficulty: Easy / Medium / Hard")
@@ -116,12 +158,11 @@ def play_game(score):
     word_letters = set(word)
     guessed_letters = set()
     wrong_guesses = 0
-    max_attempts = 8 if level == "easy" else 6 if level == "medium" else 5
+    max_attempts = 4 if level == "easy" else 5 if level == "medium" else 6
 
     print(f"\nHint: {hint}")
     print(f"You have {max_attempts} attempts to guess the word.")
     print("_ " * len(word))
-
 
     while wrong_guesses < len(HANGMAN_PICS) - 1 and word_letters:
         print(HANGMAN_PICS[wrong_guesses])
@@ -129,7 +170,7 @@ def play_game(score):
         print(f"Attempts left: {max_attempts - wrong_guesses}")
 
         current_word = [letter if letter in guessed_letters else '_' for letter in word]
-        print(' '.join(current_word))  
+        print(' '.join(current_word))
 
         guess = input("Guess a letter: ").lower()
 
@@ -150,7 +191,6 @@ def play_game(score):
             wrong_guesses += 1
             print("❌ Wrong guess.")
 
-
     if not word_letters:
         print(f"\n🎉 You guessed the word: {word}")
         score += 10
@@ -162,13 +202,15 @@ def play_game(score):
     print(f"📊 Your current score: {score}")
     return score
 
-
-print("🎮 Welcome to Hangman with Score Tracking!")
+print("🎮 Welcome to Hangman with Leaderboard!")
+player_name = input("Enter your name: ").strip() or "Player"
 
 score = 0
 while True:
     score = play_game(score)
     play_again = input("\nDo you want to play another round? (yes/no): ").lower()
     if play_again != 'yes':
-        print(f"\n👋 Thanks for playing! Your final score: {score}")
+        print(f"\n👋 Thanks for playing, {player_name}! Your final score: {score}")
+        leaderboard = update_leaderboard(player_name, score)
+        show_leaderboard(leaderboard)
         break
