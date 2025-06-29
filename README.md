@@ -14,26 +14,6 @@ A fun and interactive **command-line Hangman game** built with Python. Includes 
 
 ---
 
-## 🖼️ Game Preview
-
-\`\`\`bash
-+---+
-|   |
-O   |
-/|\  |
-/ \  |
-     |
-=========
-Guessed letters: a e o
-Attempts left: 2
-_ a n a n a
-✅ Good guess!
-
-🎉 You guessed the word: banana
-📊 Your current score: 10
-\`\`\`
-
----
 
 ## 🛠️ Requirements
 
@@ -82,9 +62,3 @@ python hangman.py
 
 ---
 
-## 🤝 Contributing
-
-Want to add more words or features?  
-Pull requests are welcome! Please feel free to fork and submit suggestions.
-
----
