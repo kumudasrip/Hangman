@@ -158,7 +158,7 @@ def play_game(score):
     word_letters = set(word)
     guessed_letters = set()
     wrong_guesses = 0
-    max_attempts = 4 if level == "easy" else 5 if level == "medium" else 6
+    max_attempts = 6
 
     print(f"\nHint: {hint}")
     print(f"You have {max_attempts} attempts to guess the word.")
