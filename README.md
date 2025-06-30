@@ -56,12 +56,4 @@ python hangman.py
 ---
 
 
-## 📌 Future Ideas
-
-- 🎯 Category selection (Animals, Tech, etc.)
-- 📊 Load/save full game history
-- 🖥️ GUI using `pygame` or `tkinter`
-- 🌐 Web version using Flask or Django
-
----
 
