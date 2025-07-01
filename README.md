@@ -23,7 +23,7 @@ A fun and interactive **command-line Hangman game** built with Python. Includes 
 
 ---
 
-## 📂 How to Run
+## How to Run it:
 
 1. Clone this repository or copy the Python file:
 
@@ -43,7 +43,7 @@ python hangman.py
 ## 📌 How to Play
 
 1. Enter your name and start.
-2. Choose a difficulty: \`Easy\`, \`Medium\`, or \`Hard\`.
+2. Choose a difficulty: `Easy`, `Medium`, or `Hard`.
 3. A word will be chosen randomly, and a hint will be displayed.
 4. Guess one letter at a time.
 5. You lose an attempt for each wrong guess.
