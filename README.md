@@ -27,16 +27,16 @@ A fun and interactive **command-line Hangman game** built with Python. Includes 
 
 1. Clone this repository or copy the Python file:
 
-\`\`\`bash
+```bash
 git clone https://github.com/kumudasrip/hangman-game.git
 cd hangman-game
-\`\`\`
+```
 
 2. Run the game:
 
-\`\`\`bash
+```bash
 python hangman.py
-\`\`\`
+```
 
 ---
 
